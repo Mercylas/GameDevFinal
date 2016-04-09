@@ -27,7 +27,7 @@ bool Inventory::canAfford(int price)
 void Inventory::howMany(){
 	this->numDamage = 0;
 	this->numRange = 0;
-	for (int i = 0; i < this->murse.size(); i++) {
+	for (unsigned int i = 0; i < this->murse.size(); i++) {
 		int c = this->murse.at(i);
 		if (c == -1) {
 			this->numDamage++;
@@ -44,7 +44,7 @@ void Inventory::howMany(){
 bool Inventory::usePower(int which){
 	if (which == 1 && this->numDamage>0) {
 		this->numDamage--;
-		for (int i = 0; i < this->murse.size(); i++) {
+		for (unsigned int i = 0; i < this->murse.size(); i++) {
 			if (this->murse.at(i) == -1) {
 				this->murse.erase(this->murse.begin() + i);
 				return true;
@@ -53,7 +53,7 @@ bool Inventory::usePower(int which){
 	}
 	else if (which == 2 && this->numRange) {
 		this->numRange--;
-		for (int i = 0; i < this->murse.size(); i++) {
+		for (unsigned int i = 0; i < this->murse.size(); i++) {
 			if (this->murse.at(i) == -2) {
 				this->murse.erase(this->murse.begin() + i);
 				return true;
@@ -62,7 +62,7 @@ bool Inventory::usePower(int which){
 	}
 	else if (which == 3 && this->numRate) {
 		this->numRate--;
-		for (int i = 0; i < this->murse.size(); i++) {
+		for (unsigned int i = 0; i < this->murse.size(); i++) {
 			if (this->murse.at(i) == -3) {
 				this->murse.erase(this->murse.begin() + i);
 				return true;

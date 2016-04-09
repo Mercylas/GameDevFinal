@@ -160,7 +160,7 @@ void Model::update(sf::Time delta) {
 	for (unsigned int i = 0; i < this->enemies.size(); i++) {
 		bool crossedLine = false;
 		this->enemies.at(i).UpdatePos(this->mapX, this->mapY);
-		if (checkPoint[-this->enemies.at(i).getPosition().x+mapX+640][-this->enemies.at(i).getPosition().y+mapY+448]) {
+		if (checkPoint[int(-this->enemies.at(i).getPosition().x+mapX+640)][int(-this->enemies.at(i).getPosition().y+mapY+448)]) {
 			if (this->enemies.at(i).checkPointUpdate(1)==0) {
 				if (enemiesLeft > -1) {
 					addEnemy(waves.at(waveNumber).enemyType, waves.at(waveNumber).enemyLevel);
@@ -197,7 +197,7 @@ void Model::update(sf::Time delta) {
 				switch (this->towers.at(i).type) {
 					//Add other options later
 					default:
-					attackSound.play();
+						attackSound.play();
 					break;
 				}
 			}
@@ -466,7 +466,7 @@ void Model::addTower(int which)
 	}
 	//std::cout << shops.at(1).positionPlayer().x << "," << shops.at(1).positionPlayer().y << std::endl;
 	//std::cout << xx << "," << yy << std::endl;
-	Tower temp(which, xx, yy);
+	Tower temp(which, int(xx), int(yy));
 	this->towers.push_back(temp);
 	unpassable[-476][-512] = true;
 }
@@ -526,7 +526,7 @@ void Model::startWave() {
 }
 
 void Model::monsterNeedTex() {
-	for (int i = 0; i < this->enemies.size(); i++) {
+	for (unsigned int i = 0; i < this->enemies.size(); i++) {
 		if (this->enemies.at(i).texSet() != true) {
 			this->newEnemyAdd = true;
 			break;
